@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{%block title%}{%endblock%}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/static/css/normalize.css">
+    <link rel="stylesheet" href="/static/css/skeleton.css">
+    <link rel="stylesheet" href="/static/css/custom.css">
+    <style>
+        {% block css %}{% endblock %}
+    </style>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+    <div class="section">
+        <div class="container">
+            {% if messages %}
+            <div class="row">
+                <div class="one-half column">
+                    <ul>
+                    {% for message in messages %}
+                        <li>{{ message }} </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endwith %}
+
+    {%block content%}{%endblock%}
+</body>
+</html>
