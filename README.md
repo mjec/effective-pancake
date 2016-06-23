@@ -27,5 +27,4 @@ This file is designed for use by the instructor of a workshop. It does not conta
 
 3. Run `cd effective-pancake` and then `vagrant up` to start the box.
 
-By default this will serve on `http://127.0.0.1:8080/`. You can modify this port in the `Vagrantfile`.
-
+By default this will serve on `http://127.0.0.1:9090/`. You can modify this port in the `Vagrantfile`.

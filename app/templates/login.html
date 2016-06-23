@@ -1,0 +1,26 @@
+{% extends "_base.html" %}
+
+{%block title%}Login{%endblock%}
+{%block css%}
+{%endblock%}
+
+{%block content%}
+<div class="section">
+	<div class="container">
+	<div class="row">
+		<h1>Login to effective-pancake</h1>
+	</div>
+    {% include "_messages.html" %}
+	<div>
+		<div class="twelve columns">
+			<form method="post" action="/login">
+                <p><label for="username">Username:</label> <input class="u-full-width" type="text" id="username" name="username"></p>
+                <p><label for="password">Password:</label> <input class="u-full-width" type="password" id="password" name="password"></p>
+                <p><input class="button-primary" type="submit" value="Submit"></p>
+            </form>
+		</div>
+	</div>
+</div>
+</div>
+
+{%endblock%}

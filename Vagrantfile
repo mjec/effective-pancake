@@ -3,9 +3,9 @@
 
 # YOU NEED TO MAKE CHANGES TO THIS FILE! THERE IS POTENTIALLY
 # MALICIOUS CODE IN HERE!
-#  __          __       _____   _   _  _____  _   _   _____ 
+#  __          __       _____   _   _  _____  _   _   _____
 #  \ \        / //\    |  __ \ | \ | ||_   _|| \ | | / ____|
-#   \ \  /\  / //  \   | |__) ||  \| |  | |  |  \| || |  __ 
+#   \ \  /\  / //  \   | |__) ||  \| |  | |  |  \| || |  __
 #    \ \/  \/ // /\ \  |  _  / | . ` |  | |  | . ` || | |_ |
 #     \  /\  // ____ \ | | \ \ | |\  | _| |_ | |\  || |__| |
 #      \/  \//_/    \_\|_|  \_\|_| \_||_____||_| \_| \_____|
@@ -29,7 +29,7 @@
 
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/trusty64"
-  config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "forwarded_port", guest: 80, host: 9090
 
   config.vm.synced_folder ".", "/vagrant"
   config.vm.synced_folder "/etc", "/host_etc", disabled: true
@@ -49,5 +49,14 @@ Vagrant.configure("2") do |config|
     run: "always",
     inline: <<-SHELL
     /vagrant/setup/provision_insecure.py
+  SHELL
+
+  config.vm.provision "shell",
+    privileged: true,
+    keep_color: false,
+    name: "startup",
+    run: "always",
+    inline: <<-SHELL
+    /vagrant/setup/on-startup.sh
   SHELL
 end
